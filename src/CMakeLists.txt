@@ -2,13 +2,16 @@
 find_package(Threads REQUIRED)
 set(LIBS ${LIBS} ${CMAKE_THREAD_LIBS_INIT})
 
-## SDL
-#find_package(SDL2 REQUIRED)
-#include_directories(${SDL2_INCLUDE_DIR})
-#set(LIBS ${LIBS} ${SDL2_LIBRARY} ${SDL2_LIBRARIES})
-#
-## wz
-#set(LIBS ${LIBS} /usr/local/lib/libwz.so)
+# SDL
+find_package(SDL2 REQUIRED)
+include_directories(${SDL2_INCLUDE_DIR})
+set(LIBS ${LIBS} ${SDL2_LIBRARIES})
+
+# wz
+find_package(WZ REQUIRED)
+include_directories(${WZ_INCLUDE_DIR})
+link_directories(${WZ_LIBRARY_DIRS})
+set(LIBS ${LIBS} ${WZ_LIBRARIES})
 
 # flags
 if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR
@@ -54,12 +57,12 @@ target_compile_options(client PRIVATE ${POSIX_TARGET_FLAGS})
 target_link_libraries(client ${NET_LIBS})
 
 ## main - main program
-#add_executable(main main.c)
-#target_link_libraries(main ${LIBS})
-#target_compile_options(main PRIVATE ${C99_TARGET_FLAGS})
-#
-## main - programs
-#install(TARGETS main
-#  RUNTIME DESTINATION bin
-#  LIBRARY DESTINATION lib
-#  ARCHIVE DESTINATION lib)
+add_executable(main main.c)
+target_link_libraries(main ${LIBS})
+target_compile_options(main PRIVATE ${C99_TARGET_FLAGS})
+
+# main - programs
+install(TARGETS main
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
