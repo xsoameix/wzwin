@@ -42,7 +42,10 @@ wz_img_to_tex(wzimg * img, SDL_Renderer * renderer) {
 }
 
 int
-main(void) {
+main(int argc, char ** argv) {
+  (void) argc;
+  (void) argv;
+
   int ret = 1;
 
   // wz
