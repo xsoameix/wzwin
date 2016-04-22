@@ -23,6 +23,8 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU" OR
   set(C99_FLAGS ${FLAGS} "-std=c99")
 elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
   set(FLAGS
+    "/wd4668" # C++: fix __cplusplus undefined bug
+    "/wd4255" # C++: fix __slwpcb() bug
     "/wd4204" # C99
     "/wd4710" # C89: inline function
     "/wd4820" # C89: struct padding
