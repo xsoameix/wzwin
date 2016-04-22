@@ -27,7 +27,7 @@ elseif ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
     "/wd4710" # C89: inline function
     "/wd4820" # C89: struct padding
     "/wd4996" # C89: sprintf & fopen
-    "/WX /Wall")
+    "/Wall")
   set(POSIX_FLAGS ${FLAGS})
   set(C99_FLAGS ${FLAGS})
 endif()
@@ -66,3 +66,12 @@ install(TARGETS main
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib)
+if (WIN32)
+  string(REPLACE "\\" "/" ZLIB_ROOT ${ZLIB_ROOT})
+  string(REPLACE "\\" "/" WZ_ROOT_DIR ${WZ_ROOT_DIR})
+  install(FILES
+    ${ZLIB_ROOT}/bin/zlibd.dll
+    ${WZ_ROOT_DIR}/bin/wz/wz.dll
+    ${WZ_ROOT_DIR}/bin/wz/aes256.dll
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+endif()
