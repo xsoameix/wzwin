@@ -72,7 +72,6 @@ if (WIN32)
   string(REPLACE "\\" "/" WZ_ROOT_DIR ${WZ_ROOT_DIR})
   install(FILES
     ${ZLIB_ROOT}/bin/zlibd.dll
-    ${WZ_ROOT_DIR}/bin/wz/wz.dll
-    ${WZ_ROOT_DIR}/bin/wz/aes256.dll
+    ${WZ_ROOT_DIR}/bin/wz.dll
     DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 endif()

@@ -19,12 +19,8 @@ if ("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
   find_library(_WZ_LIBRARY
     NAMES wz
     HINTS ${_WZ_ROOT_HINTS}
-    PATH_SUFFIXES "lib/wz")
-  find_library(_WZ_CRYPTO_LIBRARY
-    NAMES aes256
-    HINTS ${_WZ_ROOT_HINTS}
-    PATH_SUFFIXES "lib/wz")
-  set(WZ_LIBRARIES ${_WZ_LIBRARY} ${_WZ_CRYPTO_LIBRARY})
+    PATH_SUFFIXES "lib")
+  set(WZ_LIBRARIES ${_WZ_LIBRARY})
   find_package_handle_standard_args(WZ "Could NOT find WZ, try to set the path to WZ root folder in the system variable WZ_ROOT_DIR"
     WZ_LIBRARIES WZ_INCLUDE_DIR)
 else()
