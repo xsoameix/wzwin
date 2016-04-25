@@ -10,7 +10,6 @@ set(LIBS ${LIBS} ${SDL2_LIBRARIES})
 # wz
 find_package(WZ REQUIRED)
 include_directories(${WZ_INCLUDE_DIR})
-link_directories(${WZ_LIBRARY_DIRS})
 set(LIBS ${LIBS} ${WZ_LIBRARIES})
 
 # flags
